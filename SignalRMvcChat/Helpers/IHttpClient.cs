@@ -15,6 +15,13 @@ namespace SignalRMvcChat.Helpers
         /// </summary>
         /// <param name="url">Url to call and get the result = Example https://stooq.com/q/l/?s=aapl.us&f=sd2t2ohlcv&h&e=csv </param>
         /// <returns>The path of the file with the content of the downloaded file/</returns>
-        string Get(string url);
+        Task<string> Get(string url);
+
+        /// <summary>
+        /// Method that save an array of bytes into a path.
+        /// </summary>
+        /// <param name="bytes">Bytes to be save.</param>
+        /// <returns></returns>
+        string SaveFile(byte[] bytes);
     }
 }

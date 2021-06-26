@@ -14,6 +14,11 @@ namespace SignalRMvcChat.Common
         public const string stockPattern = "(/stock=\\.?)";
 
         /// <summary>
+        /// This is the pattern for the stock command. Example: "/stock=appl.us".
+        /// </summary>
+        public const string stockFormat = "/stock=";
+
+        /// <summary>
         /// This is the result message for a command. Example: "APPL.US quote is $93.42 per share".
         /// </summary>
         public const string stockMessagePattern = "{0} quote is ${1} per share";
@@ -57,5 +62,10 @@ namespace SignalRMvcChat.Common
         /// The name of the close column.
         /// </summary>
         public const string emptyColumn = "N/D";
+
+        /// <summary>
+        /// The length of the command segment 1: "/stock=" and 2: "Name of the Companny".
+        /// </summary>
+        public const int lengthOfTheCommand = 2;
     }
 }

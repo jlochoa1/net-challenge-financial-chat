@@ -8,8 +8,6 @@ namespace SignalRMvcChat.Helpers
 {
     public interface IStockCode
     {
-        string ProcessCommand(string command);
-
-        byte[] DownloadFile(string url);
+        Task<string> ProcessCommand(string command);
     }
 }

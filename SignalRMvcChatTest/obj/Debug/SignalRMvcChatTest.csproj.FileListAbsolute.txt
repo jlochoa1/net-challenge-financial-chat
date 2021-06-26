@@ -66,3 +66,5 @@ C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChatTest\o
 C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChatTest\obj\Debug\SignalRMvcChatTest.csproj.CopyComplete
 C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChatTest\obj\Debug\SignalRMvcChatTest.dll
 C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChatTest\obj\Debug\SignalRMvcChatTest.pdb
+C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChatTest\bin\Debug\aapl.us.csv
+C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChatTest\bin\Debug\MockFiles.dll

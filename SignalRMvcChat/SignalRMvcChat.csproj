@@ -151,7 +151,6 @@
     <Compile Include="Helpers\IHttpClient.cs" />
     <Compile Include="Helpers\IStockCode.cs" />
     <Compile Include="Helpers\StockCode.cs" />
-    <Compile Include="Models\FileDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalRChat\ChatHub.cs" />
     <Compile Include="Startup.cs" />
@@ -199,6 +198,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Constancts\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

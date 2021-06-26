@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace SignalRMvcChat.Helpers
@@ -23,38 +24,38 @@ namespace SignalRMvcChat.Helpers
 
         #endregion
 
-        /// <summary>
-        /// Download the file from the API url
-        /// </summary>
-        /// <param name="url">url of the Api to connect and download the file with the content of the company. For example: https://stooq.com/q/l/?s=aapl.us&f=sd2t2ohlcv&h&e=csv </param >
-        /// <returns></returns>
-        public byte[] DownloadFile(string url)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 
+         /// <summary>
+        /// Method that process the stock command.
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        public string ProcessCommand(string command)
+        public async Task<string> ProcessCommand(string command)
         {
             try
             {
                 var resultMessage = string.Empty;
                 // 1- Get the stock command of the command with the name of the company
-                var companyName = Regex.Replace(command, Statics.stockPattern, String.Empty);
-                var url = String.Format(Statics.apiUrlPattern, companyName);
 
-                // 2- Download the File from the Api
-                var filePath = _httpClient.Get(url);
+                var lengthOfTheCommand = command.Split('=');
 
-                // 3- Parse the file. This is open the file and get the data inside
-                resultMessage = ParseFile(filePath, companyName);
+                // 1.1 Check if the command has the correct format
+                if (command.Contains(Statics.stockFormat) && 
+                    lengthOfTheCommand.Length == Statics.lengthOfTheCommand && 
+                    !String.IsNullOrWhiteSpace(lengthOfTheCommand.LastOrDefault()))
+                {
+                    var companyName = Regex.Replace(command, Statics.stockPattern, String.Empty);
+                    var url = String.Format(Statics.apiUrlPattern, companyName);
 
-                // 4- Return the string
-                return resultMessage;
+                    // 2- Download the File from the Api
+                    var filePath = await _httpClient.Get(url);
+
+                    // 3- Parse the file. This is open the file and get the data inside
+                    resultMessage = ParseFile(filePath, companyName);
+
+                    // 4- Return the string
+                    return resultMessage;
+                }
+                return String.Format(Statics.generalErrorMessagePattern, "company");
             }
             catch(Exception e)
             {
@@ -62,6 +63,12 @@ namespace SignalRMvcChat.Helpers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="companyName"></param>
+        /// <returns></returns>
         private string ParseFile(string filePath, string companyName)
         {
             var resultMessage = string.Empty;
@@ -132,6 +139,11 @@ namespace SignalRMvcChat.Helpers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
         private string[] SplitData(string line)
         {
             string[] columns = line.Split(',');// Where ',' the way that the csv is splited.
