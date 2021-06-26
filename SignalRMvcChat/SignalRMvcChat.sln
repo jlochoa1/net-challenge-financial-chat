@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRMvcChat", "SignalRMvcChat.csproj", "{A64D6C4C-7A7F-47D6-8911-39D824793098}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRMvcChatTest", "..\SignalRMvcChatTest\SignalRMvcChatTest.csproj", "{226B3CBA-AB62-4C6C-AAEC-F2F2D3A0DD5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A64D6C4C-7A7F-47D6-8911-39D824793098}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A64D6C4C-7A7F-47D6-8911-39D824793098}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A64D6C4C-7A7F-47D6-8911-39D824793098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{226B3CBA-AB62-4C6C-AAEC-F2F2D3A0DD5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226B3CBA-AB62-4C6C-AAEC-F2F2D3A0DD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226B3CBA-AB62-4C6C-AAEC-F2F2D3A0DD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{226B3CBA-AB62-4C6C-AAEC-F2F2D3A0DD5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

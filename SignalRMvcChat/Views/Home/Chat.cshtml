@@ -49,9 +49,10 @@
             return encodedValue;
         }
 
+        // Function that limit the length of the lines in the chat in this case to 50.
         function limitChatLength() {
             var messageLength = $('#discussion li').length;
-            var maxLength = 50; //
+            var maxLength = 50; //This is the limit of the chat new lines length.
             var numberOfElementsToRemove = messageLength - maxLength;
 
             if (messageLength > maxLength) {
