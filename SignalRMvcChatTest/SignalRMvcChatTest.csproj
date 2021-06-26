@@ -70,6 +70,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SignalRMvcChat.Common\SignalRMvcChat.Common.csproj">
+      <Project>{1ADD1666-9B21-4696-A859-6510509CF57F}</Project>
+      <Name>SignalRMvcChat.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SignalRMvcChat\SignalRMvcChat.csproj">
       <Project>{A64D6C4C-7A7F-47D6-8911-39D824793098}</Project>
       <Name>SignalRMvcChat</Name>

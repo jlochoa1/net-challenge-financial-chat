@@ -11,18 +11,14 @@ namespace SignalRMvcChat.Helpers
     {
         #region Fields
 
-        private readonly string _stockPattern = "(/stock=\\.?)";
-        private readonly string _stockMessagePattern = "{0} quote is ${1} per share";
-        private readonly string _generalErrorMessagePattern = "An error ocurred trying to get the information of the {0}. Please contact your IT support.";
-        private readonly string _companyNotFound = "{0} wan't found into the stooq.com api. Please review your stock command.";
-        private readonly string _apiUrlPattern = "https://stooq.com/q/l/?s={0}&f=sd2t2ohlcv&h&e=csv";
         private HttpClient _httpClient;
-        private Statics _statics;
 
-        public StockCode(HttpClient httpClient, Statics statics)
+        #endregion
+
+        #region Constructor
+        public StockCode(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            _statics = statics;
         }
 
         #endregion
@@ -48,8 +44,8 @@ namespace SignalRMvcChat.Helpers
             {
                 var resultMessage = string.Empty;
                 // 1- Get the stock command of the command with the name of the company
-                var companyName = Regex.Replace(command, _stockPattern, String.Empty);
-                var url = String.Format(_apiUrlPattern, companyName);
+                var companyName = Regex.Replace(command, Statics.stockPattern, String.Empty);
+                var url = String.Format(Statics.apiUrlPattern, companyName);
 
                 // 2- Download the File from the Api
                 var filePath = _httpClient.Get(url);
@@ -58,12 +54,11 @@ namespace SignalRMvcChat.Helpers
                 resultMessage = ParseFile(filePath, companyName);
 
                 // 4- Return the string
-
                 return resultMessage;
             }
             catch(Exception e)
             {
-                return string.Empty;
+                return String.Format(Statics.generalErrorMessagePattern, "company");
             }
         }
 
@@ -86,29 +81,54 @@ namespace SignalRMvcChat.Helpers
                     }
 
                     // As if there is a value for the quote.
-                    var lowValueExist = !(dictionary.Where(x => x.Key.Equals("Low")).FirstOrDefault().Value).Equals("N/D");
-                    var closeValueExist = !(dictionary.Where(x => x.Key.Equals("Close")).FirstOrDefault().Value).Equals("N/D");
+                    if (CheckData(dictionary))
+                    {
+                        var lowValue = Convert.ToDouble(dictionary.Where(x => x.Key.Equals(Statics.lowColumn)).FirstOrDefault().Value);
+                        var closeValue = Convert.ToDouble(dictionary.Where(x => x.Key.Equals(Statics.closeColumn)).FirstOrDefault().Value);
+                        var quoteValue = (lowValue + closeValue) / 2;
 
-                    // Return error message if company not found
-                    if (lowValueExist || closeValueExist)
-                        return String.Format(_companyNotFound, companyName);
-
-                    var lowValue = Convert.ToDouble(dictionary.Where(x => x.Key.Equals("Low")).FirstOrDefault().Value);
-                    var closeValue = Convert.ToDouble(dictionary.Where(x => x.Key.Equals("Close")).FirstOrDefault().Value);
-                    var quoteValue = (lowValue + closeValue) / 2;
-
-                    //The message that the bot need to return.
-                    resultMessage = String.Format(_stockMessagePattern, companyName.ToUpper(), quoteValue);
+                        //The message that the bot need to return.
+                        resultMessage = String.Format(Statics.stockMessagePattern, companyName.ToUpper(), quoteValue);
+                    }
+                    else
+                    {
+                        return String.Format(Statics.companyNotFound, companyName);
+                    }
                 }
                 else
                 {
-                    String.Format(_generalErrorMessagePattern, companyName);
+                    return String.Format(Statics.generalErrorMessagePattern, companyName);
                 }
                 return resultMessage;
             }
             catch(Exception e)
             {
-                return String.Format(_generalErrorMessagePattern, companyName);
+                return String.Format(Statics.generalErrorMessagePattern, companyName);
+            }
+        }
+
+        /// <summary>
+        /// Method that valid if a dictionary have the correct data to continue.
+        /// </summary>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        private bool CheckData(Dictionary<string, string> dictionary)
+        {
+            try
+            {
+                // As if there is a value for the quote.
+                var lowValueExist = !(dictionary.Where(x => x.Key.Equals(Statics.lowColumn)).FirstOrDefault().Value).Equals(Statics.emptyColumn);
+                var closeValueExist = !(dictionary.Where(x => x.Key.Equals(Statics.closeColumn)).FirstOrDefault().Value).Equals(Statics.emptyColumn);
+
+                // Return error message if company not found
+                if (!lowValueExist || !closeValueExist)
+                    return false;
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
             }
         }
 

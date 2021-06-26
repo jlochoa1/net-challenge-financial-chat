@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRMvcChat", "SignalRMv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRMvcChatTest", "..\SignalRMvcChatTest\SignalRMvcChatTest.csproj", "{226B3CBA-AB62-4C6C-AAEC-F2F2D3A0DD5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRMvcChat.Common", "..\SignalRMvcChat.Common\SignalRMvcChat.Common.csproj", "{B602AFED-DC66-4881-A8BB-BA55DDD98C2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRMvcChat.Common", "..\SignalRMvcChat.Common\SignalRMvcChat.Common.csproj", "{1ADD1666-9B21-4696-A859-6510509CF57F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{226B3CBA-AB62-4C6C-AAEC-F2F2D3A0DD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{226B3CBA-AB62-4C6C-AAEC-F2F2D3A0DD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{226B3CBA-AB62-4C6C-AAEC-F2F2D3A0DD5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B602AFED-DC66-4881-A8BB-BA55DDD98C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B602AFED-DC66-4881-A8BB-BA55DDD98C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B602AFED-DC66-4881-A8BB-BA55DDD98C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B602AFED-DC66-4881-A8BB-BA55DDD98C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ADD1666-9B21-4696-A859-6510509CF57F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ADD1666-9B21-4696-A859-6510509CF57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ADD1666-9B21-4696-A859-6510509CF57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ADD1666-9B21-4696-A859-6510509CF57F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

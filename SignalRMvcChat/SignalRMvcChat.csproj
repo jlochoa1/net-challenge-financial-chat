@@ -215,7 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SignalRMvcChat.Common\SignalRMvcChat.Common.csproj">
-      <Project>{b602afed-dc66-4881-a8bb-ba55ddd98c2c}</Project>
+      <Project>{1add1666-9b21-4696-a859-6510509cf57f}</Project>
       <Name>SignalRMvcChat.Common</Name>
     </ProjectReference>
   </ItemGroup>

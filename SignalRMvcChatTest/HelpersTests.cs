@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using SignalRMvcChat.Common;
 using SignalRMvcChat.Helpers;
 using System;
 
@@ -37,8 +38,9 @@ namespace SignalRMvcChatTest
                 var companyName = "test.cr";
                 var stockCommand = $"/stock={companyName}";
                 var result = stockCode.ProcessCommand(stockCommand);
+                var expectedResult = String.Format(Statics.companyNotFound, companyName);
 
-                Assert.AreEqual(result, string.Empty);
+                Assert.AreEqual(result, expectedResult);
             }
             catch (Exception e)
             {
@@ -56,8 +58,9 @@ namespace SignalRMvcChatTest
                 var companyName = "";
                 var stockCommand = $"/stock={companyName}";
                 var result = stockCode.ProcessCommand(stockCommand);
+                var expectedResult = String.Format(Statics.companyNotFound, companyName);
 
-                Assert.AreEqual(result, string.Empty);
+                Assert.AreEqual(result, expectedResult);
             }
             catch (Exception e)
             {
