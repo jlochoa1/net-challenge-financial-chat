@@ -1,6 +1,5 @@
 C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChat.Common\bin\Debug\SignalRMvcChat.Common.dll
 C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChat.Common\bin\Debug\SignalRMvcChat.Common.pdb
-C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChat.Common\obj\Debug\SignalRMvcChat.Common.csprojAssemblyReference.cache
 C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChat.Common\obj\Debug\SignalRMvcChat.Common.csproj.CoreCompileInputs.cache
 C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChat.Common\obj\Debug\SignalRMvcChat.Common.dll
 C:\Users\José Luis\source\Git\net-challenge-financial-chat\SignalRMvcChat.Common\obj\Debug\SignalRMvcChat.Common.pdb
